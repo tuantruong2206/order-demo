@@ -1,0 +1,31 @@
+
+host: localhost
+
+server:
+  port: 8060
+  tomcat:
+    max-threads: 10000
+    max-connections: 20000
+    accept-count: 80000
+    min-spare-threads: 10000
+
+spring:
+  # To See H2 Console in Browser:
+  # http://localhost:8060/h2-console
+  # Enabling H2 Console
+  h2:
+    console:
+      enabled: true
+  datasource:
+#    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:file:./data/order-service
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
